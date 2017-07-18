@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TodoTextInput from './TodoTextInput';
+import TextInputContainer from '../containers/TextInputContainer';
+import * as TodoActions from '../actions/TodoActions';
 
 export default class Header extends Component {
   static propTypes = {
-    addTodo: PropTypes.func.isRequired
+    addTodo: PropTypes.func.isRequired,
+    suggestions: PropTypes.array.isRequired,
   };
 
   handleSave(text) {
@@ -17,9 +19,10 @@ export default class Header extends Component {
     return (
       <header className='header'>
           <h1>todos</h1>
-          <TodoTextInput newTodo={true}
-                         onSave={::this.handleSave}
-                         placeholder='What needs to be done?' />
+          <TextInputContainer
+            newTodo={true}
+            onSave={::this.handleSave}
+            placeholder='What needs to be packed?' />
       </header>
     );
   }
